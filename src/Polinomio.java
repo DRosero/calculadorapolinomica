@@ -72,42 +72,51 @@ public class Polinomio {
 		}
 	}
 	
+	
+	
+	public Polinomio ordenarDec(Polinomio p){		
+		p.setPolinomio(Ordenar.ordena(p.getPolinomio()));
+		return p;
+	}
+   	
+	
+	public int grado(Polinomio p){		
+		return p.getPolinomio().get(0).getExp();
+	}
+	
+	public Polinomio completar(Polinomio p){
+	 p=p.ordenarDec(p);
+	 for(int i=0;i<p.getPolinomio().size()-1;i++){
+		 int aux=p.getPolinomio().get(i).getExp()-p.getPolinomio().get(i+1).getExp();
+		 if(aux>1){
+			 for(int j=0; j<aux-1;j++){
+				 Termino t= new Termino();
+				 t.setValor(0);
+				 t.setExp(0);
+				 p.getPolinomio().add(i+1,t);
+			 }
+		 }
+	 }
+	 return p;	
+	}
+	
+	public boolean estaOrdenada(Polinomio p){
+		boolean aux=true;	
+			for(int i=0;i<p.getPolinomio().size()-1;i++){
+				if(p.getPolinomio().get(i).getExp()!=0){
+					System.out.println("------------>>>>>>Entro");
+					aux=aux && (p.getPolinomio().get(i).getExp()>p.getPolinomio().get(i+1).getExp());
+				}
+			}	    
+		return aux;
+	}
+	
 	public String toString(){
 		String aux="";
 		for(int i=0; i<polinomio.size();i++){	
 			aux= aux + polinomio.get(i).getValor()+ "X^" + polinomio.get(i).getExp()+" + ";
 		}
 		return aux;
-	}
-	
-	public Polinomio ordenarDec(Polinomio p){
-		Polinomio p2= new Polinomio();
-		Polinomio aux=p;
-		int i=0;
-		while(aux.getPolinomio().size()!=0){
-			if(aux.getPolinomio().size()==1){
-				p2.getPolinomio().add(aux.getPolinomio().get(i));
-				aux.getPolinomio().remove(i);	
-			}
-			else{
-				if(aux.getPolinomio().get(i).getExp()>aux.getPolinomio().get(i+1).getExp()){
-					p2.getPolinomio().add(aux.getPolinomio().get(i+1));
-					aux.getPolinomio().remove(i+1);
-				}
-				else{
-					p2.getPolinomio().add(p.getPolinomio().get(i));
-					aux.getPolinomio().remove(i);
-				}
-			}	
-		}
-		p.setPolinomio(p2.getPolinomio());
-		return p2;
-	}
-   	
-	public int grado(Polinomio p){
-		Polinomio aux=p;
-		Polinomio p2=aux.ordenarDec(aux);
-		return p2.getPolinomio().get(p2.getPolinomio().size()-1).getExp();
 	}
 	
 	private boolean esNumero(char c){
