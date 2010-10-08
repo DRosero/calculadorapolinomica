@@ -80,6 +80,7 @@ public class Calculadora {
 	public Polinomio Rufini(Polinomio p, Polinomio q){
         Polinomio r = new Polinomio();
         p = p.ordenarDec(p);
+        p=p.completar(p);
         q = q.ordenarDec(q);
         int a = (q.getPolinomio().get(q.getPolinomio().size()-1)).getValor()*-1;
         int aux = p.getPolinomio().get(0).getValor();
