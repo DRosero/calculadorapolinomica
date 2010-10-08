@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.LinkedList;
 
 
@@ -19,43 +21,29 @@ public class Polinomio {
 	}
 	
 	public void makePolinomioFromFile(String str){
-	    Termino t = new Termino();		
-		String aux = "";
-		int flag=0;
-		for(int i=0 ;i<str.length(); i++){
-		    char p = str.charAt(i);
-			System.out.println("char"+p);
-			if(p =='+'){
-			   flag=0;
-			}
-			
-			if(p =='-'){
-			   flag=1;
-			}
-			System.out.println("-------->>>>esNumero"+esNumero(p));
-			if(esNumero(p)){
-			   System.out.println("acu"+p);
-			   aux= aux + p;
-			}
-			
-			if(p=='X'){
-			   if(flag==1){
-			      t.setValor((-1)*Integer.parseInt(aux));  
-			   }
-			   else{
-			      System.out.println("<<<<<<<<<<<<<<<"+aux);
-			      t.setValor(Integer.parseInt(aux));
-				  System.out.println("<<<<<<<<<<<<<<<Valor"+t.getValor());
-			   }
-			   aux="";
-			}
-			
-			if((p=='+' || p=='-' || p=='.') && i!=0 ){
-			   t.setExp(Integer.parseInt(aux));			   
-			   addTermPolinomico(t.getValor(),t.getExp());
-			   aux="";
-			}		 
-		}    	
+		try
+		   {
+
+		   BufferedReader reader= new BufferedReader(new FileReader(str));
+		   String linea= reader.readLine();
+		   while(linea!=null) {
+		      
+		        String [] res = linea.split("\\s+");
+		        int valor = Integer.parseInt(res[0]);
+		      
+		        System.out.println(valor);
+		        int exponente = Integer.parseInt(res[1]);
+
+
+		        addTermPolinomico(valor, exponente);
+
+		        linea= reader.readLine();
+		   }
+		  }
+		   catch (Exception e)
+		    {
+		        e.printStackTrace();
+		    }	        
 	}
 	
 	
@@ -103,8 +91,7 @@ public class Polinomio {
 	public boolean estaOrdenada(Polinomio p){
 		boolean aux=true;	
 			for(int i=0;i<p.getPolinomio().size()-1;i++){
-				if(p.getPolinomio().get(i).getExp()!=0){
-					System.out.println("------------>>>>>>Entro");
+				if(p.getPolinomio().get(i).getExp()!=0){					
 					aux=aux && (p.getPolinomio().get(i).getExp()>p.getPolinomio().get(i+1).getExp());
 				}
 			}	    
@@ -117,11 +104,5 @@ public class Polinomio {
 			aux= aux + polinomio.get(i).getValor()+ "X^" + polinomio.get(i).getExp()+" + ";
 		}
 		return aux;
-	}
-	
-	private boolean esNumero(char c){
-	    System.out.println("Esnumero"+c);
-	    return c=='0' || c=='1' || c=='2' || c=='3' || c=='4' || c=='5' || c=='6' || c=='7' || c=='8' || c=='9';
-	}
-	
+	}			
 }
