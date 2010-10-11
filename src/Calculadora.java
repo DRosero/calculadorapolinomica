@@ -39,9 +39,9 @@ public class Calculadora {
 		LinkedList<Termino> terminoMay = mayor.getPolinomio();
 		LinkedList<Termino> terminoMen = menor.getPolinomio(); 	
 		while(i <menor.grado(menor)){			
-			int valMay = (terminoMay.get(i+dif)).getValor();
+			int valMay = (terminoMay.get(i+dif)).getValor();			
 			int valMen = (terminoMen.get(i)).getValor();
-			(terminoMay.get(i+dif)).setValor(valMay+valMen);
+			(terminoMay.get(i+dif)).setValor(valMay+valMen);			
 			i++;
 		}
 		return mayor;	
@@ -55,8 +55,13 @@ public class Calculadora {
 				 Polinomio result = new Polinomio();
 				 Polinomio auxi = new Polinomio();
 				 	
-			     if (p.estaOrdenada(p) == false){ p.ordenarDec(p);}	
-			     if (q.estaOrdenada(q) == false ){ q.ordenarDec(q);}  
+			     if (p.estaOrdenada(p) == false){
+			    	 p.ordenarDec(p);
+			     }	
+			     
+			     if (q.estaOrdenada(q) == false ){
+			    	 q.ordenarDec(q);
+			     }  
 			       
 			     for (int i=0;i<p.getPolinomio().size();i++){
 			    	 for (int j=0;j<q.getPolinomio().size();j++){

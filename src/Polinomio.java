@@ -58,16 +58,26 @@ public class Polinomio {
 		for(int i=0; i<polinomio.size()-1;i++){	
 			System.out.print("("+polinomio.get(i).getValor()+ "X^" + polinomio.get(i).getExp()+") +");
 		}
-		System.out.println(polinomio.get(polinomio.size()-1).getValor()+ "X^" + polinomio.get(polinomio.size()-1).getExp());
+		System.out.println("("+polinomio.get(polinomio.size()-1).getValor()+ "X^" + polinomio.get(polinomio.size()-1).getExp()+")");
 	}
-	
-	
-	
-	public Polinomio ordenarDec(Polinomio p){		
-		p.setPolinomio(Ordenar.ordena(p.getPolinomio()));
-		return p;
+				
+	public Polinomio ordenarDec(Polinomio p1){
+	    int n = p1.getPolinomio().size();
+	    for (int j=1; j < n; j++) {
+	        for (int i=0; i < n-j; i++) {
+	            Termino primero = (Termino) p1.getPolinomio().get(i);
+	            Termino segundo = (Termino) p1.getPolinomio().get(i+1);
+	            if (primero.getExp() < segundo.getExp()) {
+	                Termino temp = primero;
+	                p1.getPolinomio().remove(i);
+	                p1.getPolinomio().add(i,segundo);
+	                p1.getPolinomio().remove(i+1);
+	                p1.getPolinomio().add(i+1, temp);
+	            }
+	        }
+	    }
+	    return p1;
 	}
-   	
 	
 	public int grado(Polinomio p){		
 		return p.getPolinomio().get(0).getExp();
