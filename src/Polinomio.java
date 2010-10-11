@@ -55,9 +55,10 @@ public class Polinomio {
 	}
 
 	public void verPolinomio(){
-		for(int i=0; i<polinomio.size();i++){	
-			System.out.print(polinomio.get(i).getValor()+ "^" + polinomio.get(i).getExp()+" | ");
+		for(int i=0; i<polinomio.size()-1;i++){	
+			System.out.print("("+polinomio.get(i).getValor()+ "X^" + polinomio.get(i).getExp()+") +");
 		}
+		System.out.println(polinomio.get(polinomio.size()-1).getValor()+ "X^" + polinomio.get(polinomio.size()-1).getExp());
 	}
 	
 	
@@ -97,12 +98,5 @@ public class Polinomio {
 			}	    
 		return aux;
 	}
-	
-	public String toString(){
-		String aux="";
-		for(int i=0; i<polinomio.size();i++){	
-			aux= aux + polinomio.get(i).getValor()+ "X^" + polinomio.get(i).getExp()+" + ";
-		}
-		return aux;
-	}			
+		
 }

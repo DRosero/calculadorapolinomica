@@ -1,5 +1,5 @@
 
-public class PruebaDecOrden {
+public class Prueba {
 
 	/**
 	 * @param args
