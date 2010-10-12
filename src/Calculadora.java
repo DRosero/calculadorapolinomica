@@ -50,9 +50,8 @@ public class Calculadora {
 			(terminoMay.get(i+dif)).setValor(valMay+valMen);
 			System.out.println("Longitud---->>>>>>>>>>>>><"+terminoMay.size());
 			}
-			else{
-				int valMen = (terminoMen.get(i)).getValor();
-				(terminoMay.get(i+dif)).setValor(valMen);	
+			else{				
+				terminoMay.add(terminoMen.get(i));	
 			}
 			i++;
 		}
