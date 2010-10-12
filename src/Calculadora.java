@@ -55,6 +55,9 @@ public class Calculadora {
 			}			
 			i++;
 		}		
+		if(terminoMen.get(terminoMen.size()-1).getExp()==0){
+		   terminoMay.add(terminoMen.get(terminoMen.size()-1));
+		}
 		return mayor;	
 	}
 	
