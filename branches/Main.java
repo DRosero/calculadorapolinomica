@@ -151,6 +151,7 @@ public class Main {
             System.out.println("logitud de q "+longQ);
             System.out.println("logitud de q "+longP);
             Polinomio aux = new Polinomio();
+            
             /*System.out.println((p.getPolinomio().get(0)).getValor());
             System.out.println((q.getPolinomio().get(0)).getValor());*/
             int i=0;
