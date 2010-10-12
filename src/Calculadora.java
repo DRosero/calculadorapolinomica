@@ -93,7 +93,7 @@ public class Calculadora {
 		return p1;
 	}
 	
-	public Polinomio Rufini(Polinomio p, Polinomio q){
+	public Polinomio rufini(Polinomio p, Polinomio q){
         
 		Polinomio r = new Polinomio();
         p = p.ordenarDec(p);
