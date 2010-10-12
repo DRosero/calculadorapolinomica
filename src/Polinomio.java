@@ -30,8 +30,7 @@ public class Polinomio {
 		      
 		        String [] res = linea.split("\\s+");
 		        int valor = Integer.parseInt(res[0]);
-		      
-		        System.out.println(valor);
+		      		        
 		        int exponente = Integer.parseInt(res[1]);
 
 

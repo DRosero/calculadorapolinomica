@@ -27,8 +27,10 @@ public class Calculadora {
 		Polinomio res = new Polinomio();
 		
 		if(p1.grado(p1)< p2.grado(p2)){
+			
 			res.setPolinomio((LinkedList<Termino>) (p2.getPolinomio()).clone());			
 			return plus(p1,res);
+			
 		}
 		else{ 
 			
@@ -42,19 +44,17 @@ public class Calculadora {
 		int dif = mayor.grado(mayor)-menor.grado(menor);		
 		LinkedList<Termino> terminoMay = mayor.getPolinomio();
 		LinkedList<Termino> terminoMen = menor.getPolinomio(); 	
-		while(i <menor.grado(menor) /*&& i+dif<terminoMay.size()*/){
-			if(i+dif<terminoMay.size()){
-			System.out.println("Entro---->>>>>>>>>>>>><"+i+"dif "+dif);
+		while(i <menor.grado(menor)){
+			if(i+dif<terminoMay.size()){			
 			int valMay = (terminoMay.get(i+dif)).getValor();			
 			int valMen = (terminoMen.get(i)).getValor();
-			(terminoMay.get(i+dif)).setValor(valMay+valMen);
-			System.out.println("Longitud---->>>>>>>>>>>>><"+terminoMay.size());
+			(terminoMay.get(i+dif)).setValor(valMay+valMen);			
 			}
 			else{				
 				terminoMay.add(terminoMen.get(i));	
-			}
+			}			
 			i++;
-		}
+		}		
 		return mayor;	
 	}
 	
@@ -94,7 +94,8 @@ public class Calculadora {
 	}
 	
 	public Polinomio Rufini(Polinomio p, Polinomio q){
-        Polinomio r = new Polinomio();
+        
+		Polinomio r = new Polinomio();
         p = p.ordenarDec(p);
         p=p.completar(p);
         q = q.ordenarDec(q);
