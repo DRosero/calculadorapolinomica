@@ -87,16 +87,19 @@ public class Polinomio {
 	 p=p.ordenarDec(p);
 	 for(int i=0;i<p.getPolinomio().size()-1;i++){
 		 int aux=p.getPolinomio().get(i).getExp()-p.getPolinomio().get(i+1).getExp();
-		 if(aux>1){
+		 int expMayor= p.getPolinomio().get(i).getExp();
+		 int z=1;
+		 if(aux>1 && p.getPolinomio().get(i).getValor()!=0 ){
 			 for(int j=0; j<aux-1;j++){
 				 Termino t= new Termino();
 				 t.setValor(0);
-				 t.setExp(0);
+				 t.setExp(expMayor-z);
 				 p.getPolinomio().add(i+1,t);
+				 z++;
 			 }
 		 }
 	 }
-	 return p;	
+	 return p.ordenarDec(p);	
 	}
 	
 	public boolean estaOrdenada(Polinomio p){

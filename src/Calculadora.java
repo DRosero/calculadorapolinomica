@@ -18,8 +18,12 @@ public class Calculadora {
 	public Polinomio suma(Polinomio p1,Polinomio p2){		
 		p1.ordenarDec(p1);
 		p2.ordenarDec(p2);		
-		p1.completar(p1);		
-		p2.completar(p2);		
+		p1.completar(p1);
+		System.out.println("\n");
+		p1.verPolinomio();
+		System.out.println("\n");
+		p2.completar(p2);
+		p2.verPolinomio();
 		Polinomio res = new Polinomio();
 		
 		if(p1.grado(p1)< p2.grado(p2)){
@@ -38,10 +42,18 @@ public class Calculadora {
 		int dif = mayor.grado(mayor)-menor.grado(menor);		
 		LinkedList<Termino> terminoMay = mayor.getPolinomio();
 		LinkedList<Termino> terminoMen = menor.getPolinomio(); 	
-		while(i <menor.grado(menor)){			
+		while(i <menor.grado(menor) /*&& i+dif<terminoMay.size()*/){
+			if(i+dif<terminoMay.size()){
+			System.out.println("Entro---->>>>>>>>>>>>><"+i+"dif "+dif);
 			int valMay = (terminoMay.get(i+dif)).getValor();			
 			int valMen = (terminoMen.get(i)).getValor();
-			(terminoMay.get(i+dif)).setValor(valMay+valMen);			
+			(terminoMay.get(i+dif)).setValor(valMay+valMen);
+			System.out.println("Longitud---->>>>>>>>>>>>><"+terminoMay.size());
+			}
+			else{
+				int valMen = (terminoMen.get(i)).getValor();
+				(terminoMay.get(i+dif)).setValor(valMen);	
+			}
 			i++;
 		}
 		return mayor;	
