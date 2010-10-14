@@ -1,8 +1,4 @@
-/*
-         * Metodo  para dividir dos polinomios
-         * param. Los dos polinomios a ser divididos
-         * return. Un polinomio que contiene la división de los terminos pasados como parametros
-         */
+
 		  		
 	
     public Polinomio Division(Polinomio p,Polinomio q){
