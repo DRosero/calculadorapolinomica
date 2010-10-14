@@ -1,1 +1,31 @@
-holassssssssssssss
+/*
+         * Metodo  para dividir dos polinomios
+         * param. Los dos polinomios a ser divididos
+         * return. Un polinomio que contiene la división de los terminos pasados como parametros
+         */
+		  		
+	
+    public Polinomio Division(Polinomio p,Polinomio q){
+        Polinomio r = new Polinomio();
+        p.ordenarDec(p);
+        q.ordenarDec(q);
+        while (p.grado(p) >=  q.grado(q)){
+            int a = (p.getPolinomio().get(0)).getValor()/q.getPolinomio().get(0).getValor();
+            int resExp = (p.getPolinomio().get(0)).getExp() - (q.getPolinomio().get(0)).getExp();
+            Polinomio auxP = new Polinomio();
+            auxP.addTermPolinomico(a, resExp);
+            if(a != 0){
+                r.addTermPolinomico(a, resExp);
+            }
+            Polinomio multP = producto(q,auxP);
+            multP.completar(multP);
+            p = resta(p,multP);
+            if (p.getPolinomio().get(0).getValor() != 0){
+                break;
+            }else{
+                p.getPolinomio().remove(0);
+            }
+
+        }
+       return r;
+}
