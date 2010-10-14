@@ -1,3 +1,4 @@
+package rufini;
 /**
  *
  * @author Bono Federico		

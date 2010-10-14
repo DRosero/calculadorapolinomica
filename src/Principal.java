@@ -1,4 +1,4 @@
-
+package rufini;
 public class Principal {
 
 	/**
@@ -14,24 +14,24 @@ public class Principal {
 		
 		// armo el primer polinomio
 		System.out.println("\n"+"Polinomio 1");
-		polinomio1.makePolinomioFromFile("C:/polinomio/CalculadoraPolinomica/src/polinomio1.txt");						
+		polinomio1.makePolinomioFromFile("/home/nan/NetBeansProjects/Rufini/src/rufini/polinomio1.txt");
 		polinomio1.verPolinomio();
 		
 		//armo el segundo Polinomio
 		System.out.println("\n"+"Polinomio 2");
-		polinomio2.makePolinomioFromFile("C:/polinomio/CalculadoraPolinomica/src/polinomio2.txt");				
+		polinomio2.makePolinomioFromFile("/home/nan/NetBeansProjects/Rufini/src/rufini/polinomio2.txt");
 		polinomio2.verPolinomio();
 		
 		//armo el Tercera Polinomio
 		System.out.println("\n"+"Polinomio 3");
-		polinomio3.makePolinomioFromFile("C:/polinomio/CalculadoraPolinomica/src/polinomio3.txt");		
+		polinomio3.makePolinomioFromFile("/home/nan/NetBeansProjects/Rufini/src/rufini/polinomio3.txt");
 		polinomio3.verPolinomio();
 		
 		//armo el Binomio
 		System.out.println("\n"+"Binomio");		
-		binomio.makePolinomioFromFile("C:/polinomio/CalculadoraPolinomica/src/binomio.txt");		
+		binomio.makePolinomioFromFile("/home/nan/NetBeansProjects/Rufini/src/rufini/binomio.txt");
 		binomio.verPolinomio();
-		
+
 		//Calculadora
 		Calculadora c=new Calculadora();
 		
@@ -64,6 +64,16 @@ public class Principal {
 		Polinomio resultado3 = c.producto(polinomio2, polinomio3);		
 		System.out.println("\n");
 		resultado3.verPolinomio();
+
+                //realizamos una Divicion
+		System.out.println("\n"+"Divicion");
+		System.out.println("\n"+"Polinomio");
+		polinomio2.verPolinomio();
+		System.out.println("\n"+"Polinomio");
+		polinomio1.verPolinomio();
+		Polinomio resultado4 = c.Division(polinomio2, polinomio1);
+		System.out.println("\n");
+		resultado4.verPolinomio();
 		
 //realizamos una Division
 		System.out.println("\n"+"Division");
@@ -82,9 +92,9 @@ public class Principal {
 		polinomio1.verPolinomio();
 		System.out.println("\n"+"Binomio");
 		binomio.verPolinomio();
-		Polinomio resultado4 = c.rufini(polinomio1, binomio);		
+		Polinomio resultado5 = c.rufini(polinomio1, binomio);
 		System.out.println("\n");
-		resultado4.verPolinomio();
+		resultado5.verPolinomio();
 	}
 
 }
