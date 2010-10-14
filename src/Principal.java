@@ -65,6 +65,17 @@ public class Principal {
 		System.out.println("\n");
 		resultado3.verPolinomio();
 		
+//realizamos una Division
+		System.out.println("\n"+"Division");
+		System.out.println("\n"+"Polinomio");
+		polinomio2.verPolinomio();
+		System.out.println("\n"+"Polinomio");
+		polinomio3.verPolinomio();
+		Polinomio resultado3 = c.Division(polinomio2, polinomio3);		
+		System.out.println("\n");
+		resultado3.verPolinomio();
+
+
 		//realizamos una Ruffini
 		System.out.println("\n"+"Ruffini");
 		System.out.println("\n"+"Polinomio");
