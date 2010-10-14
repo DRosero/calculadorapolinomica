@@ -1,3 +1,12 @@
+/**
+ *
+ * @author Bono Federico		
+ * @author Cabral Hernan
+ * @author Cuello Lucas
+ * @author Magliano Barbara
+ * @author Mercado Lucas
+ *
+ **/
 import java.util.LinkedList;
 
 
@@ -6,7 +15,12 @@ public class Calculadora {
 	public Calculadora(){
 			
 	}
-	
+	/*
+         * Metodo para restar polinomios
+         * param. dos polinomios utilizados para restar
+         * return.Polinomio que tiene la diferencia de los polinomios pasados como parametros
+         */
+
 	
 	public Polinomio resta(Polinomio p1, Polinomio p2) {
 		Polinomio neg = new Polinomio();
@@ -14,6 +28,11 @@ public class Calculadora {
 		return suma(p1, producto(p2,neg));
     }
     
+        /*
+         * Metodo suma para polinomios
+         * param. Los dos polinomios a ser sumados
+         * return. Polinomio que tiene la suma de los polinomios pasados como parametros
+         */
 	@SuppressWarnings("unchecked")
 	public Polinomio suma(Polinomio p1,Polinomio p2){		
 		p1.ordenarDec(p1);
@@ -29,17 +48,21 @@ public class Calculadora {
 		if(p1.grado(p1)< p2.grado(p2)){
 			
 			res.setPolinomio((LinkedList<Termino>) (p2.getPolinomio()).clone());			
-			return plus(p1,res);
+			return sumaAux(p1,res);
 			
 		}
 		else{ 
 			
 			res.setPolinomio((LinkedList<Termino>) (p1.getPolinomio()).clone());			
-			return plus(p2,res);
+			return sumaAux(p2,res);
 		}
 	}
-	
-	private static Polinomio plus(Polinomio menor, Polinomio mayor){
+	 /*
+         * Metodo utilizado para realizar la operacion de la suma de polinomios de distinto grado.
+         * param. Los dos polinomios que van a ser sumados, el primer parámetro es de menor grado que el del segundo.
+         * return. Un polinomio que contiene la suma de los polinomios pasados como parametros
+         */
+	private static Polinomio sumaAux(Polinomio menor, Polinomio mayor){
 		int i=0;
 		int dif = mayor.grado(mayor)-menor.grado(menor);		
 		LinkedList<Termino> terminoMay = mayor.getPolinomio();
@@ -60,7 +83,12 @@ public class Calculadora {
 		}
 		return mayor;	
 	}
-	
+	  /*
+         * Metodo multiplicacion de polinomios
+         * param. Los dos polinomios que van a ser multiplicados
+         * return. Un polinomio que contiene la multiplicación de los parametros pasados como parametros
+         */
+
 	public Polinomio producto(Polinomio p, Polinomio q) {		 
 			     
 				 int valor;
@@ -90,12 +118,45 @@ public class Calculadora {
 			     result.ordenarDec(result);
 			     return result;
 			   
-    }			  		
+    }	
+    /*
+         * Metodo  para dividir dos polinomios
+         * param. Los dos polinomios a ser divididos
+         * return. Un polinomio que contiene la división de los terminos pasados como parametros
+         */
+		  		
 	
-	public static Polinomio cociente(Polinomio p1,Polinomio p2){
-		return p1;
-	}
+    public Polinomio Division(Polinomio p,Polinomio q){
+        Polinomio r = new Polinomio();
+        p.ordenarDec(p);
+        q.ordenarDec(q);
+        while (p.grado(p) >=  q.grado(q)){
+            int a = (p.getPolinomio().get(0)).getValor()/q.getPolinomio().get(0).getValor();
+            int resExp = (p.getPolinomio().get(0)).getExp() - (q.getPolinomio().get(0)).getExp();
+            Polinomio auxP = new Polinomio();
+            auxP.addTermPolinomico(a, resExp);
+            if(a != 0){
+                r.addTermPolinomico(a, resExp);
+            }
+            Polinomio multP = producto(q,auxP);
+            multP.completar(multP);
+            p = resta(p,multP);
+            if (p.getPolinomio().get(0).getValor() != 0){
+                break;
+            }else{
+                p.getPolinomio().remove(0);
+            }
+
+        }
+       return r;
+}
 	
+         /*
+         * Metodo división de polinomos con Rufini.La regla de Rufini nos permite dividir un polinomio entre un binomial 
+	 * de la forma (x - r) (siendo r un número entero). 
+         * return. Un polinomio que contiene la división de los pasados como parametros
+         * param. Los dos polinomios a ser divididos
+         */
 	public Polinomio rufini(Polinomio p, Polinomio q){
         
 		Polinomio r = new Polinomio();
@@ -116,7 +177,11 @@ public class Calculadora {
         return r;
         // TODO code application logic here
     }
-	
+	/*
+	 * La regla de Rufini nos permite dividir un polinomio entre un binomial 
+	 * de la forma (x - r) (siendo r un número entero). Esta función nos devuelve 
+	 * un booleano si dados dos polinomios es posible poder aplicar la regla de
+	 */
 	public boolean EsPosibleRuffini(Polinomio p,Polinomio q){
         q = q.ordenarDec(q);
         if((q.getPolinomio().size() == 2) && (q.getPolinomio().get(0).getExp()==1)){
