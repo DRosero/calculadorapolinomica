@@ -1,3 +1,4 @@
+package rufini;
 public class Termino {
         
 	    private int valor;
