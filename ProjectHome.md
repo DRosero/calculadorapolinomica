@@ -1,0 +1,1 @@
+este proyecto se basa en una calculadora de polinomios. Que consistira en relizar suma,multiplicacion, resta y division de los mismos.
